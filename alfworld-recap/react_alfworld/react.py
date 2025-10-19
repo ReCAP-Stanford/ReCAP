@@ -1,0 +1,222 @@
+import os
+import openai
+import tiktoken
+
+
+# 1) Define model pricing (per 1 000 tokens)
+MODEL_PRICING = {
+    "gpt-4o": {
+        "prompt": 0.0025,     # $0.03 per 1 000 prompt tokens
+        "completion": 0.01  # $0.06 per 1 000 completion tokens
+    },
+    "gpt-4.1": {
+        "prompt": 0.002,
+        "completion": 0.008
+    },
+    # add other models/prices here…
+}
+
+def count_chat_tokens(messages, model):
+    """Count tokens in a list of chat messages for the given model."""
+    enc = tiktoken.encoding_for_model(model)
+    # per OpenAI chat-token guidelines:
+    tokens_per_message = 3
+    tokens_per_name    = 1
+    total = 0
+    for msg in messages:
+        total += tokens_per_message
+        for k, v in msg.items():
+            total += len(enc.encode(v))
+            if k == "name":
+                total += tokens_per_name
+    total += 3  # assistant priming
+    return total
+
+usage_history = []
+log_cost = True
+
+def save_cost_to_json(file_path: str = "cost.json"):
+    with open(file_path, "w") as f:
+        json.dump(usage_history, f, ensure_ascii=False, indent=4)
+
+client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
+def llm(histroy, stop=["\n"], model="gpt-4o"):
+# def llm(histroy, stop=["\n"], model="Qwen/Qwen3-235B-A22B-fp8-tput"):
+# def llm(histroy, stop=["\n"], model="meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"):
+# def llm(histroy, stop=["\n"], model="deepseek-ai/DeepSeek-V3"):
+    success = False
+    while not success:
+        try:
+            if len(histroy) > 128:
+                del histroy[2:4]
+            if log_cost:
+                prompt_tokens = count_chat_tokens(histroy, model)
+
+            response = client.chat.completions.create(
+                model=model,
+                messages=histroy,
+                stop=stop
+            )
+            response = response.choices[0].message.content
+            histroy.append({'role': 'assistant', 'content': response})
+            success = True
+        except openai.BadRequestError as e:
+            error_code = e.code
+            if error_code == 'context_length_exceeded':
+                assert len(histroy) > 3, "The starter prompt is too long."
+                # Remove the first and second element
+                del histroy[2:34]
+
+            else:
+                raise e # Raise other errors for user to handle
+        if log_cost:
+            # 4) Count completion tokens
+            enc = tiktoken.encoding_for_model(model)
+            completion_tokens = len(enc.encode(response))
+            total_tokens = prompt_tokens + completion_tokens
+            
+            # 5) Compute cost
+            pricing = MODEL_PRICING.get(model, {})
+            prompt_cost = prompt_tokens/1_000 * pricing.get("prompt", 0)
+            completion_cost = completion_tokens/1_000 * pricing.get("completion", 0)
+            cost = prompt_cost + completion_cost
+        
+            usage = {
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "total_tokens": total_tokens,
+                "prompt_cost": prompt_cost,
+                "completion_cost": completion_cost,
+                "cost_usd": cost
+            }
+            usage_history.append(usage)
+    return response
+
+from alfworld.agents.environment import get_environment
+import alfworld.agents.modules.generic as generic
+
+# load config
+config = generic.load_config()
+task_cnt_map = {
+    1: 24,
+    2: 18,
+    3: 31,
+    4: 23,
+    5: 21,
+    6: 17
+}
+cur_task = 6
+config['env']['task_types'] = [cur_task]
+env_type = config['env']['type'] # 'AlfredTWEnv' or 'AlfredThorEnv' or 'AlfredHybrid'
+    
+split = "eval_out_of_distribution"
+
+env = get_environment(env_type)(config, train_eval=split)
+env = env.init_env(batch_size=1)
+
+def process_ob(ob):
+    if ob.startswith('You arrive at loc '):
+        ob = ob[ob.find('. ')+2:]    
+    return ob
+
+
+import json
+prompt_file = 'alfworld_3prompts_fixed.json'
+# prompt_file = 'alfworld_3prompts_act.json'
+with open(prompt_file, 'r') as f:
+    d = json.load(f)
+
+import sys
+
+def generate_init_prompt(init_obs: str):
+
+    return f"""
+        
+Here's the rule of the environment:
+You can only pick up one item at a time. Always use Inventory to check what you have in possesion when you are not sure or plan to pick up an item.
+
+Here is the task.
+
+{init_obs}
+"""
+
+def alfworld_run(history, to_print=True, ob='', valid_actions=''):
+    # init_prompt = prompt + ob + '\nValid Actions:\nthink\n' + valid_actions + '\n>'
+    # prompt = ''
+    if to_print:
+        # print(ob)
+        sys.stdout.flush()
+    i = 0
+    while i < 50:
+        action = llm(history, stop=['\n']).strip()
+        if action[:9] == 'assistant':
+            action = action[10:].strip()
+        observation, reward, done, info = env.step([action])
+        valid_actions = "\n".join(info['admissible_commands'][0])
+        ob, reward, done = process_ob(observation[0]), info['won'][0], done[0]
+        # action = action.replace('>', '').strip()
+        if 'think:' in action:
+            ob = 'OK.'
+        elif action not in info['admissible_commands'][0]:
+            i += 1
+            ob = f"""{ob}
+Because your output is not included in the valid actions provided in the observation. Your assumptions may not be valid.
+Potential cause of the problem might be:
+1. The action name is not the EXACT match of the valid action name.
+2. You are thinking but your output does not start with "think:"
+Valid Actions:
+{valid_actions}
+"""
+        else:
+            ob = f"{ob}\n\nValid Actions:\n{valid_actions}"
+            i += 1
+        if to_print:
+            # print(f'Act {i}: {action}\nObs {i}:  {observation}')
+            print(f'Act {i}: {action}')
+            sys.stdout.flush()
+        # prompt += f' {action}\n{observation}\n>'
+        history.append({"role": "user", "content": ob})
+        if done:
+            return reward
+    return 0
+
+
+prefixes = {
+    'pick_and_place': 'put',
+    'pick_clean_then_place': 'clean',
+    'pick_heat_then_place': 'heat',
+    'pick_cool_then_place': 'cool',
+    'look_at_obj': 'examine',
+    'pick_two_obj': 'puttwo'
+}
+cnts = [0] * 6
+rs = [0] * 6
+
+for _ in range(task_cnt_map[cur_task]):
+    ob, info = env.reset()
+    ob = '\n'.join(ob[0].split('\n\n')[1:])
+    valid_actions = "\n".join(info['admissible_commands'][0])
+    name = '/'.join(info['extra.gamefile'][0].split('/')[-3:-1])
+    print(name)
+    for i, (k, v) in enumerate(prefixes.items()):
+        if name.startswith(k):
+            history = []
+            # fewshot1 = d[f'react_{v}_1']
+            fewshot0 = d[f'react_{v}_0']
+            # history.append({"role": "user", "content": f"Interact with a household to solve a task. Here are two examples.\n{fewshot1}\n{fewshot0}"})
+            history.append({"role": "user", "content": f"Interact with a household to solve a task. Here is one example.\n{fewshot0}"})
+            history.append({"role": "user", "content": generate_init_prompt(f"{ob}\n\nValid Actions:\n{valid_actions}")})
+            # prompt = 'Interact with a household to solve a task. You can only pick up one item at a time. Always use Inventory to check what you have in possesion when you are not sure or plan to pick up an item. Here are two examples.\n' + d[f'react_{v}_1'] + d[f'react_{v}_0'] + '\nHere is the task.\n'
+            print(k, v)
+            r = alfworld_run(history, ob=ob, valid_actions=valid_actions)
+            rs[i] += r
+            cnts[i] += 1
+            break
+    print(_+1, 'r', r, 'rs', rs, 'cnts', cnts, 'sum(rs)/sum(cnts)', sum(rs) / sum(cnts))
+    print('------------\n')
+
+if log_cost:
+    log_dir = f"logs"
+    log_cost_json_file_path = f"{log_dir}/cost_react_gpt4o_task{cur_task}.json"
+    save_cost_to_json(log_cost_json_file_path)

@@ -1,0 +1,54 @@
+{
+    "asynchronous/1_lettuce_chicken_sandwich_42": {
+        "done": true,
+        "steps": 24,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_84": {
+        "done": true,
+        "steps": 21,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_126": {
+        "done": true,
+        "steps": 20,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_168": {
+        "done": true,
+        "steps": 23,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_210": {
+        "done": false,
+        "steps": 35,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_252": {
+        "done": true,
+        "steps": 23,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_294": {
+        "done": true,
+        "steps": 54,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_336": {
+        "done": true,
+        "steps": 40,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_378": {
+        "done": true,
+        "steps": 24,
+        "max_steps": 108
+    },
+    "asynchronous/1_lettuce_chicken_sandwich_420": {
+        "done": false,
+        "steps": 37,
+        "max_steps": 108
+    },
+    "accuracy": 0.8,
+    "average_steps": 30.1
+}

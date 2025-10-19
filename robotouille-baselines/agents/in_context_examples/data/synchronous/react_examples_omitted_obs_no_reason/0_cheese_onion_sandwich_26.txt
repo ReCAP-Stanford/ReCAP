@@ -1,0 +1,355 @@
+Interaction 1
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from stove1 to board1
+
+
+Interaction 2
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Pick up lettuce1 from board1 using robot1
+
+
+Interaction 3
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from board1 to table3
+
+
+Interaction 4
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Place lettuce1 on table3 using robot1
+
+
+Interaction 5
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from table3 to fryer1
+
+
+Interaction 6
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Pick up onion1 from fryer1 using robot1
+
+
+Interaction 7
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from fryer1 to board1
+
+
+Interaction 8
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Place onion1 on board1 using robot1
+
+
+Interaction 9
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Cut onion1 on board1 using robot1
+
+
+Interaction 10
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Cut onion1 on board1 using robot1
+
+
+Interaction 11
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Cut onion1 on board1 using robot1
+
+
+Interaction 12
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Pick up onion1 from board1 using robot1
+
+
+Interaction 13
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from board1 to table1
+
+
+Interaction 14
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Stack onion1 on top of bread1 using robot1
+
+
+Interaction 15
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from table1 to sink3
+
+
+Interaction 16
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+3. The third ingredient is cheese. I see cheese1 on sink3. I must pick up cheese1 and stack it on top of onion1. Since robot1 is at sink3 and cheese1 is on sink3, I will use robot1 to pick up cheese1.
+
+Action: Pick up cheese1 from sink3 using robot1
+
+
+Interaction 17
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+Action: Move robot1 from sink3 to table1
+
+
+Interaction 18
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+3. The third ingredient is cheese. I see cheese1 held by robot1. I must stack cheese1 on top of onion1. Since robot1 is at table1 and cheese1 is held by robot1, I will use robot1 to stack cheese1 on top of onion1.
+
+Action: Stack cheese1 on top of onion1 using robot1
+
+
+Interaction 19
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from table1 to stove1
+
+
+Interaction 20
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Pick up bread2 from stove1 using robot1
+
+
+Interaction 21
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Move robot1 from stove1 to table1
+
+
+Interaction 22
+---------------
+
+
+Observation:
+...
+
+Valid Actions:
+...
+
+Goal: Prepare a onion cheese sandwich on a table
+
+
+Action: Stack bread2 on top of cheese1 using robot1
+
+

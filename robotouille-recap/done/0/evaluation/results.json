@@ -1,0 +1,54 @@
+{
+    "asynchronous/0_cheese_chicken_sandwich_42": {
+        "done": true,
+        "steps": 36,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_84": {
+        "done": true,
+        "steps": 30,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_126": {
+        "done": false,
+        "steps": 24,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_168": {
+        "done": false,
+        "steps": 32,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_210": {
+        "done": true,
+        "steps": 24,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_252": {
+        "done": true,
+        "steps": 16,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_294": {
+        "done": true,
+        "steps": 17,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_336": {
+        "done": true,
+        "steps": 31,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_378": {
+        "done": true,
+        "steps": 24,
+        "max_steps": 84
+    },
+    "asynchronous/0_cheese_chicken_sandwich_420": {
+        "done": true,
+        "steps": 28,
+        "max_steps": 84
+    },
+    "accuracy": 0.8,
+    "average_steps": 26.2
+}

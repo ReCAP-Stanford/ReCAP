@@ -1,0 +1,17 @@
+﻿Interaction 1
+-------
+
+Observation:
+There is bread1 on table1, bread2 on stove1, onion1 on fryer1, onion2 on sink4, and cheese1 on sink3. The board1 is empty and there are cutting boards and tables available. The goal is to prepare an onion cheese sandwich on a table.
+
+Goal: Prepare a onion cheese sandwich on a table
+
+Reasoning:
+The goal is to make an onion cheese sandwich on a table.  A sandwich must be stacked from bottom to top as follows: table → bread → onion → cheese → bread.  A bread slice on a table will be used as the base (bread1 is already on table1).  An onion must be fully cut before it can be stacked.  Cheese can be picked up and placed directly.  After the ingredients are prepared, they must be stacked in the correct order on the bread base.
+
+Plan:
+Step 1: Fully cut an onion to prepare it for stacking.
+Step 2: Place the cut onion on the slice of bread that is on the table.
+Step 3: Pick up cheese and place it on top of the cut onion.
+Step 4: Place another slice of bread on top of the cheese to complete the sandwich.
+Execution order: (Step 1 AND Step 2 AND Step 3) AND Step 4

@@ -1,0 +1,41 @@
+﻿seed = 42
+test_count = 200
+max_retry = 10
+split = 'dev'
+
+rule_description = """  You must propose a series of task decomposition or an action given the current observation and valid actions. I will help you keep track of your progress by providing your previous thoughts and remaining subtasks.
+
+You will receive the initial state and the goal as follows:
+Observation: ...
+Claim: <some factual statement to verify>
+
+Solve a claim‐verification task with interleaving Thought, Action, Observation steps.
+- **Thought** can reason about what you know so far and what you need to check next.
+- **Action** must be one of:
+  1. `Search[Entity]` — searches exactly that Wikipedia entry and returns the first paragraph if found; if not, returns a list of similar titles to try. Use only named entities or technical concepts likely to have their own page.
+  2. `Lookup[string]` — returns the next sentence in the current passage containing that exact string. Keep the string short and distinctive.
+  3. `Finish[answer]` — ends the task by outputting one of three labels: `SUPPORTS`, `REFUTES`, or `NOT ENOUGH INFO`.
+        - so you can only output Finish[SUPPORTS], Finish[REFUTES], or Finish[NOT ENOUGH INFO] as the final answer.
+- Criteria for the final answer:
+    - SUPPORTS: Evidence directly confirms the claim.
+    - REFUTES: Evidence directly contradicts the claim.
+    - NOT ENOUGH INFO: Evidence neither confirms nor contradicts the claim, or no evidence is found.
+
+Some important reminders:
+- Only use `Finish[answer]` when you’re confident no further lookup or search can change your decision.
+- You may use `Search[...]` or `Lookup[...]` when you believe the claim still needs more evidence.
+- The final `answer` must be exactly one of: `SUPPORTS`, `REFUTES`, or `NOT ENOUGH INFO`. Do not include quotes or extra text.
+
+
+Always format your response in json format:
+{
+    "think": "",  // str: Your thought
+    "subtasks": [...],  // List[str]: The updated subtask list for completing the task. If your current task can be executed directly from valid actions, the list should include only that action. If the task is done, i.e. no remaining subtasks, the updated subtask list should be empty.
+}
+"""
+
+system_description = ""
+
+env_name = 'fever'
+
+

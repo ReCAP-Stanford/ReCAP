@@ -1,0 +1,307 @@
+Interaction 1
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Pick up chicken1 from table2 using robot1
+
+
+Interaction 2
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+Action: Move robot1 from table2 to stove1
+
+
+Interaction 3
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Place chicken1 on stove1 using robot1
+
+
+Interaction 4
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Cook chicken1 on stove1 using robot1
+
+
+Interaction 5
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from stove1 to sink4
+
+
+Interaction 6
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Pick up onion2 from sink4 using robot1
+
+
+Interaction 7
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from sink4 to board2
+
+
+Interaction 8
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Place onion2 on board2 using robot1
+
+
+Interaction 9
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Cut onion2 on board2 using robot1
+
+
+Interaction 10
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Cut onion2 on board2 using robot1
+
+
+Interaction 11
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Cut onion2 on board2 using robot1
+
+
+Interaction 12
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Pick up onion2 from board2 using robot1
+
+
+Interaction 13
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from board2 to table1
+
+
+Interaction 14
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Stack onion2 on top of bread1 using robot1
+
+
+Interaction 15
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from table1 to stove1
+
+
+Interaction 16
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Pick up chicken1 from stove1 using robot1
+
+
+Interaction 17
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from stove1 to table1
+
+
+Interaction 18
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Stack chicken1 on top of onion2 using robot1
+
+
+Interaction 19
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from table1 to fryer2
+
+
+Interaction 20
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Pick up bread2 from fryer2 using robot1
+
+
+Interaction 21
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Move robot1 from fryer2 to table1
+
+
+Interaction 22
+---------------
+
+
+Observation: ...
+
+Valid Actions: ...
+
+Goal: Prepare an onion chicken sandwich on a table
+
+
+Action: Stack bread2 on top of chicken1 using robot1
+
+

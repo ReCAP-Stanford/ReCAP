@@ -1,0 +1,84 @@
+version: 1.0.0
+experiment_name: ReAct
+prompt_description: last-reasoning-action-mpc
+prompt_version: 1.3.1
+system: |
+  You are an agent exploring a game environment with a goal to achieve. You will propose a series of task decomposition or an action in the current state to make progress towards the goal. Follow the rules carefully since the environment may have constraints that do not align with the real world.
+instructions: |
+  You must propose a series of task decomposition or an action given the current observation and valid actions. I will help you keep track of your progress by providing your previous thoughts and remaining subtasks.
+
+  You will receive the initial state and the goal as follows:
+  Optional[Error Feedback: ...]
+  Observation: ...
+  Valid Actions: ...
+
+  where
+  - 'Observation' contains state information about objects in the environment and the goal
+  - 'Valid Actions' is the list of actions you can take in the current state
+  - 'Error Feedback' includes feedback about an invalid action taken in a previous interaction (not included in the history)
+    - This feedback is automated and shows if the action is either syntactically incorrect or does not exist in the valid actions list
+    - This feedback does not check for semantic correctness and should neither reinforce nor discourage the current strategy
+
+  Always format your response in json format:
+  {
+    "think": "",  // str: Your thought
+    "subtasks": [...],  // List[str]: The updated subtask list for completing the task. If your current task can be executed directly from valid actions, the list should include only that action. If the task is done, i.e. no remaining subtasks, the updated subtask list should be empty.
+  }
+
+  Below is a description of the environment:
+  You are a robot in a kitchen environment. The objects in the kitchen and your goal are described
+  in the Observation. The various types of objects in the kitchen include
+  - Station: A location in the kitchen where you can perform special actions, e.g. cooking or cutting
+  - Item: An object that can be picked up and potentially used in a Station
+  - Player: Robots, including you, that are present in the kitchen
+  - Container: An object that can hold meals, e.g. a pot or a pan
+  - Meal: A mixture of ingredients contained within a Container
+
+  The **asynchronous** actions you can take in the environment are as follows:
+  - Cook {i1} on {s1} using {p1} | Cooks Item {i1} on Station {s1} using Player {p1} (fully cooks over 3 timesteps, not immediate)
+  - Fry {i1} on {s1} using {p1} | Fries Item {i1} on Station {s1} using Player {p1} (fully fries over 3 timesteps, not immediate)
+  - Fill {c1} with water from {s1} using {p1} | Fills Container {c1} with water from Station {s1} using Player {p1} (fully fills over 3 timesteps, not immediate)
+  - Boil {c1}'s contents on {s1} using {p1} | Boils the contents of Container {c1} on Station {s1} using Player {p1} (fully boils over 3 timesteps, not immediate)
+  
+  The rules of the environment are as follows:
+  - A Player can only hold a single Item at a time
+  - An Item must be placed on a Station to perform an action on it
+  - A Station must contain a single Item to perform an action on it
+  - Items can only be stacked on top of one another, but not underneath
+  - A Container must contain a Meal to have items added to it
+  - A Meal can be transferred between Containers
+  - When you cut an item, you must cut 3 times in succession, not immediate
+  - You can't place an object directly on a Station/Board when it's occupied by another object. It's impossible to stack two items side by side on the same Station/Board. Otherwise you will stack on it. You might want to remove the object underneath first.
+  - If you cook/fry/boil/fill water, it is fully finished after 3 timesteps, not immediate. This is asynchronous (only consumes one action)
+  - You can do other things while waiting for an asynchronous action (cooking/frying/boiling/filling water). If there's nothing else you can do while waiting, 
+    you have to generate n * 'Do Nothing' actions, n = the number of timesteps remaining until the action is finished.
+    - The moment you start cooking/frying/boiling/filling water does NOT count as a timestep. It means 3 timesteps after the action is performed.
+
+  The goal of this environment is to satisfy a human's request, such as 'make me a hamburger'. These
+  goals are intentionally underspecified so common sense reasoning is required to complete them. Specifically,
+  it is important to consider
+  - the minimal ingredients required to satisfy the request
+  - any preparation steps for the ingredients like cooking, cutting, etc.
+
+  When the goal is achieved or a time limit is reached, the environment will end.
+
+  Ingredients that must be cut (must cut 3 times in succession, not immediate), unless specified (e.g. "Whole tomato")
+  - Tomato
+  - Onion
+  - Lettuce
+
+  Important Reminders:
+  - When you cut an item, you must cut 3 times in succession, not immediate
+  - You can't cut/cook an item when it's stacked on another item.
+  - When you cook, fry, or boil an item, it is fully finished after 3 timesteps, not immediate
+  - You can't place an object directly on a Station/Board/Stove/Fryer when it's occupied by another object. It's impossible to stack two items side by side on the same Station/Board/Stove/Fryer. Otherwise you will stack on it. You might want to remove the object underneath first
+  - If you need two cheeses, they cannot be directly stacked together.
+  - If you need two patties, they cannot be directly stacked together.
+  - ALL completed items must be ONLY placed on tables, NOT on any other things! (not Board, Stove, Fryer, etc.)
+
+
+  Follow this recipe guide to learn how to make food in Robotouille:
+  Sandwich - On a empty table, put a slice of bread, stacked on required ingredients, stacked on another slice of bread. The bread must directly touch the table.
+  Hamburger - On a empty table, A bottom bun, stacked on required ingredients, stacked on a top bun. All ingredients from the name of the hamburger must be included (i.e. onion cheese burger means having a patty, cut raw onion, cheese, and two buns). A patty must be stacked on the bottom bun. The bun must directly touch the table.
+  Soup - A pot is first filled with water in the sink, then boiled on a stove. While boiling, add ingredients in. And finally fill the soup in a bowl when ready.
+  

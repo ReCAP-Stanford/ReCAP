@@ -1,0 +1,65 @@
+[original_task_description]
+"synchronous/0_cheese_sandwich" = "Prepare a cheese sandwich on a table"
+
+"synchronous/1_lettuce_sandwich" = "Prepare a lettuce sandwich on a table"
+
+"synchronous/2_lettuce_tomato_sandwich" = "Prepare a sandwich with lettuce and tomato on a table"
+
+"synchronous/3_burger" = "Prepare a hamburger on a table"
+
+"synchronous/4_cheeseburger" = "Prepare a cheeseburger on a table"
+
+"synchronous/5_double_cheeseburger" = "Prepare a double cheeseburger on a table which contains two patties and two cheese slices interleaved (starting with a patty)"
+
+"synchronous/6_lettuce_tomato_cheeseburger" = "Prepare a lettuce tomato cheeseburger on a table"
+
+"synchronous/7_two_lettuce_chicken_sandwich" = "Prepare two lettuce chicken sandwiches on separate tables"
+
+"synchronous/8_two_lettuce_tomato_burger" = "Prepare two lettuce tomato burgers on separate tables"
+
+"synchronous/9_onion_cheese_burger_and_lettuce_tomato_chicken_sandwich" = "Prepare a burger with cheese and onions on one table and a chicken sandwich with lettuce and tomato on another table"
+
+"asynchronous/0_cheese_chicken_sandwich" = "Prepare a cheese chicken sandwich on a table"
+
+"asynchronous/1_lettuce_chicken_sandwich" = "Prepare a lettuce chicken sandwich on a table"
+
+"asynchronous/2_lettuce_tomato_fried_chicken_sandwich" = "Prepare a fried chicken sandwich with lettuce and tomato on a table"
+
+"asynchronous/3_tomato_burger_and_fries" = "Prepare a tomato burger and fries on separate tables"
+
+"asynchronous/3.1_lettuce_cheeseburger" = "Prepare a lettuce cheeseburger"
+
+"asynchronous/4_onion_cheese_burger_and_fried_onion" = "Prepare an onion cheese burger and fried onion rings on separate tables"
+
+"asynchronous/5_potato_soup" = "Make potato soup with a whole potato and serve into a bowl on a table"
+
+"asynchronous/6_onion_soup" = "Make onion soup with 3 cut onions and serve into a bowl on a table"
+
+"asynchronous/7_tomato_soup_and_lettuce_chicken_sandwich" = "Make tomato soup with a whole tomato served into a bowl on a table and a lettuce chicken sandwich on another table"
+
+"asynchronous/8_onion_tomato_soup_and_two_chicken_sandwich" = "Make soup with a cut tomato and cut onion served into a bowl on a table and two chicken sandwiches on other tables"
+
+"asynchronous/9_onion_potato_soup_and_fried_onion_ring_lettuce_burger_and_onion_cheese_sandwich" = "Make soup with a whole onion and a whole potato served into a bowl, a burger with lettuce and fried onion rings, and an onion chicken sandwich all on separate tables"
+
+[original_task_description_async]
+"asynchronous/0_cheese_chicken_sandwich" = "Prepare a cheese chicken sandwich on a table"
+
+"asynchronous/1_lettuce_chicken_sandwich" = "Prepare a lettuce chicken sandwich on a table"
+
+"asynchronous/2_lettuce_tomato_fried_chicken_sandwich" = "Prepare a fried chicken sandwich with lettuce and tomato on a table"
+
+"asynchronous/3_tomato_burger_and_fries" = "Prepare a tomato burger and fries on separate tables"
+
+"asynchronous/3.1_lettuce_cheeseburger" = "Prepare a lettuce cheeseburger"
+
+"asynchronous/4_onion_cheese_burger_and_fried_onion" = "Prepare an onion cheese burger and fried onion rings on separate tables"
+
+"asynchronous/5_potato_soup" = "Make potato soup with a whole potato and serve into a bowl on a table"
+
+"asynchronous/6_onion_soup" = "Make onion soup with 3 cut onions and serve into a bowl on a table"
+
+"asynchronous/7_tomato_soup_and_lettuce_chicken_sandwich" = "Make tomato soup with a whole tomato served into a bowl on a table and a lettuce chicken sandwich on another table"
+
+"asynchronous/8_onion_tomato_soup_and_two_chicken_sandwich" = "Make soup with a cut tomato and cut onion served into a bowl on a table and two chicken sandwiches on other tables"
+
+"asynchronous/9_onion_potato_soup_and_fried_onion_ring_lettuce_burger_and_onion_cheese_sandwich" = "Make soup with a whole onion and potato served into a bowl, a burger with lettuce and fried onion rings, and an onion chicken sandwich all on separate tables"

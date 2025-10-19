@@ -1,0 +1,38 @@
+[project]
+name = "alfworld-MATRIX"
+version = "0.1.0"
+requires-python = "==3.9.6"
+dependencies = [
+  "alfworld",
+  "antlr4-python3-runtime==4.11",
+  "black==25.1.0",
+  "datasets==3.5.0",
+  "fastapi==0.115.12",
+  "isort==6.0.1",
+  "langgraph==0.3.21",
+  "matplotlib>=3.9.4",
+  "pandas==2.2.3",
+  "pyyaml>=6.0.2",
+  "rich==13.9.4",
+  "sympy==1.13.3",
+  "tensorboard>=2.19.0",
+  "toml>=0.10.2",
+  "torch>=2.7.0",
+  "torchvision>=0.22.0",
+  "openai",
+  "tiktoken",
+  "together"
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
