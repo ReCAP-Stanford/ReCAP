@@ -107,7 +107,7 @@ If you use this repository or ReCAP in your research, please cite:
 @inproceedings{zhang2025recap,
   title     = {ReCAP: Recursive Context-Aware Reasoning and Planning for Large Language Model Agents},
   author    = {Zhenyu Zhang and Tianyi Chen and Weiran Xu and Alex Pentland and Jiaxin Pei},
-  booktitle = {Proceedings of the 39th Conference on Neural Information Processing Systems (NeurIPS)},
+  booktitle = {Conference on Neural Information Processing Systems (NeurIPS)},
   year      = {2025}
 }
 ```
