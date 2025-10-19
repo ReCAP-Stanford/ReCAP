@@ -4,7 +4,7 @@ This repository contains the implementation and benchmark evaluations for **ReCA
 
 > **ReCAP: Recursive Context-Aware Reasoning and Planning for Large Language Model Agents**  
 > *Zhenyu Zhang\*, Tianyi Chen\*, Weiran Xu\*, Alex Pentland, Jiaxin Pei*  
-> (*Equal contribution; †Project lead: Zhenyu Zhang*)  
+> (\*Equal contribution; †Project lead: Zhenyu Zhang*)  
 <!-- > [Paper (NeurIPS 2025)](./NeurIPS_2025_RECAP_Camera_Ready.pdf) -->
 
 ---
