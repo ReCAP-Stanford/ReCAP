@@ -1,5 +1,5 @@
 # 🧠 ReCAP: Recursive Context-Aware Reasoning and Planning
-[arXiv:2510.23822](https://arxiv.org/abs/2510.23822)
+[![arXiv](https://img.shields.io/badge/arXiv-2510.23822-b31b1b.svg)](https://arxiv.org/abs/2510.23822)
 
 This repository contains the implementation and benchmark evaluations for **ReCAP (Recursive Context-Aware Reasoning and Planning)**, as described in our NeurIPS 2025 paper:
 
