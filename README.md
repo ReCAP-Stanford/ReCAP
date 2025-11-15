@@ -68,14 +68,7 @@ ReCAP-main/
 
 ## ⚙️ Setup
 
-Each subdirectory contains its own `README.md` with setup and execution instructions.  
-In general, experiments can be reproduced as follows:
-
-```bash
-cd robotouille-recap
-pip install -r requirements.txt
-python run_recap.py --env robotouille --mode async
-```
+Each subdirectory contains its own `README.md` with setup and execution instructions.
 
 All experiments use GPT-4o via the OpenAI API, unless otherwise specified.
 
